@@ -1,5 +1,6 @@
 import React, { PropTypes } from 'react';
-import { Link } from 'react-router';
+import { connect } from 'react-redux';
+import * as courseActions from '../../actions/courseActions';
 
 class CoursesPage extends React.Component {
 
@@ -21,7 +22,7 @@ class CoursesPage extends React.Component {
   }
 
   onClickSave() {
-    alert(`Saving ${this.state.course.title}`);
+    this.props.dispatch(courseActions.createCourse(this.state.course)); // Since mapDispatchToProps isn't defined, connect() injects dispatch prop automatically
   }
 
   render() {
@@ -43,4 +44,10 @@ class CoursesPage extends React.Component {
 
 }
 
-export default CoursesPage;
+function mapStateToProps(state, ownProps) {
+  return {
+    courses: state.courses // See: reducers/index.js
+  };
+}
+
+export default connect(mapStateToProps)(CoursesPage);

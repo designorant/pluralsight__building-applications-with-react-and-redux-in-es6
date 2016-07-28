@@ -9,7 +9,7 @@ class ManageCoursePage extends React.Component {
     super(props, context);
 
     this.state = {
-      course: Object.assign({}, this.props.course),
+      course: Object.assign({}, props.course), // 'this' keyword ommited since passed on constructor
       errors: {}
     };
 

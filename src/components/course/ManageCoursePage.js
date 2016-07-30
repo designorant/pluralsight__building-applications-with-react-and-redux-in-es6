@@ -53,8 +53,20 @@ ManageCoursePage.contextTypes = {
   router: PropTypes.object // Left optional to avoid linting warning when testing. Behaviour isn't impacted.
 };
 
+function getCourseById(courses, id) {
+  const course = courses.filter(course => course.id == id);
+  if (course.length) return course[0]; // Since filter return an array it has to be the very first element
+  return null;
+}
+
 function mapStateToProps(state, ownProps) {
+  const courseId = ownProps.params.id; // From the path '/course/:id'
+
   let course = {id: '', watchHref: '', title: '', authorId: '', length: '', category: ''};
+
+  if (courseId && state.courses.length > 0) {
+    course = getCourseById(state.courses, courseId);
+  }
 
   const authorsFormattedForDropdown = state.authors.map(author => {
     return {

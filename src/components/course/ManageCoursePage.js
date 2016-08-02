@@ -5,7 +5,7 @@ import * as courseActions from '../../actions/courseActions';
 import CourseForm from './CourseForm';
 import toastr from 'toastr';
 
-export class ManageCoursePage extends React.Component {
+export class ManageCoursePage extends React.Component { // eslint-disable-line import/no-named-as-default
   constructor(props, context) {
     super(props, context);
 

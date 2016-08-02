@@ -1,7 +1,7 @@
 import React from 'react';
 import expect from 'expect';
 import { mount, shallow } from 'enzyme';
-import { ManageCoursePage } from './ManageCoursePage';
+import { ManageCoursePage } from './ManageCoursePage'; // Kinda silly but does the job for testing
 
 describe('Manage Course Page', () => {
   it('sets error message when trying to save empty title', () => {
